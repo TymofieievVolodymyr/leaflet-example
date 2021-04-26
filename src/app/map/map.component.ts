@@ -41,7 +41,9 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    L.geoJSON(geojsonFeature).addTo(this.map);
+    // L.geoJSON(geojsonFeature).addTo(this.map);
+    const myLayer = L.geoJSON().addTo(this.map);
+    myLayer.addData(geojsonFeature);
     tiles.addTo(this.map);
   }
 
