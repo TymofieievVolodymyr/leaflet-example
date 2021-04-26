@@ -42,17 +42,29 @@ export class MapComponent implements AfterViewInit {
     });
 
     const myStyle = {
-      "color": "#ff7800",
-      "weight": 5,
-      "opacity": 0.65
+      'color': '#ff7800',
+      'weight': 5,
+      'opacity': 0.65
     };
 
-    L.geoJSON(geojsonFeature, {
-      style: myStyle
-    }).addTo(this.map);
+    // L.geoJSON(geojsonFeature, {
+    //   style: myStyle
+    // }).addTo(this.map);
     // L.geoJSON(geojsonFeature).addTo(this.map);
     // const myLayer = L.geoJSON().addTo(this.map);
     // myLayer.addData(geojsonFeature);
+
+    L.geoJSON(geojsonFeature, {
+      style: function(feature) {
+        switch (feature.properties.party) {
+          case 'Republican':
+            return {color: '#ff0000'};
+          case 'Democrat':
+            return {color: '#0000ff'};
+        }
+      }
+    }).addTo(this.map);
+
     tiles.addTo(this.map);
   }
 
