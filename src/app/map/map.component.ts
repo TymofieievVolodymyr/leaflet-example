@@ -2,6 +2,7 @@ import {Component, AfterViewInit} from '@angular/core';
 import * as L from 'leaflet';
 import {MarkerService} from '../marker.service';
 import {ShapeService} from '../shape.service';
+import {geojsonFeature} from '../data/geojsonFeature';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -26,6 +27,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   private map;
   private states;
+  private geojsonFeature = geojsonFeature;
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -39,6 +41,7 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
+    L.geoJSON(geojsonFeature).addTo(this.map);
     tiles.addTo(this.map);
   }
 
@@ -97,11 +100,11 @@ export class MapComponent implements AfterViewInit {
     this.initMap();
     // this.markerService.makeCapitalMarkers(this.map);
     // add circles
-    this.markerService.makeCapitalCircleMarkers(this.map);
+    // this.markerService.makeCapitalCircleMarkers(this.map);
     // add shapes
-    this.shapeService.getStateShapes().subscribe(states => {
-      this.states = states;
-      this.initStatesLayer();
-    });
+    // this.shapeService.getStateShapes().subscribe(states => {
+    //   this.states = states;
+    //   this.initStatesLayer();
+    // });
   }
 }
