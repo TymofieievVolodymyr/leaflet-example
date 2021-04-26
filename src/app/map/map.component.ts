@@ -41,11 +41,11 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    const myStyle = {
-      'color': '#ff7800',
-      'weight': 5,
-      'opacity': 0.65
-    };
+    // const myStyle = {
+    //   'color': '#ff7800',
+    //   'weight': 5,
+    //   'opacity': 0.65
+    // };
 
     // L.geoJSON(geojsonFeature, {
     //   style: myStyle
@@ -80,28 +80,34 @@ export class MapComponent implements AfterViewInit {
     //   }
     // }).addTo(this.map);
 
-    function onEachFeature(feature, layer) {
-      // does this feature have a property named popupContent?
-      if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
-      }
-    }
+    // function onEachFeature(feature, layer) {
+    //   // does this feature have a property named popupContent?
+    //   if (feature.properties && feature.properties.popupContent) {
+    //     layer.bindPopup(feature.properties.popupContent);
+    //   }
+    // }
 
-    const geojsonFeature = {
-      "type": "Feature",
-      "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "This is where the Rockies play!"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-104.99404, 39.75621]
-      }
-    };
+    // const geojsonFeature = {
+    //   "type": "Feature",
+    //   "properties": {
+    //     "name": "Coors Field",
+    //     "amenity": "Baseball Stadium",
+    //     "popupContent": "This is where the Rockies play!"
+    //   },
+    //   "geometry": {
+    //     "type": "Point",
+    //     "coordinates": [-104.99404, 39.75621]
+    //   }
+    // };
 
-    L.geoJSON(geojsonFeature, {
-      onEachFeature: onEachFeature
+    // L.geoJSON(geojsonFeature, {
+    //   onEachFeature: onEachFeature
+    // }).addTo(this.map);
+
+    L.geoJSON(this.geojsonFeature, {
+      filter: (feature, layer) => {
+        return feature.properties.show_on_map;
+      }
     }).addTo(this.map);
 
     tiles.addTo(this.map);

@@ -17,33 +17,54 @@
 //   "type": "LineString",
 //   "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
 // }];
+// export const geojsonFeature = [{
+//   "type": "Feature",
+//   "properties": {
+//     "party": "Republican",
+//     "popupContent": "This is where the Rockies play!"
+//   },
+//   "geometry": {
+//     "type": "Polygon",
+//     "coordinates": [[
+//       [-104.05, 48.99],
+//       [-97.22, 48.98],
+//       [-96.58, 45.94],
+//       [-104.03, 45.94],
+//       [-104.05, 48.99]
+//     ]]
+//   }
+// }, {
+//   "type": "Feature",
+//   "properties": {"party": "Democrat"},
+//   "geometry": {
+//     "type": "Polygon",
+//     "coordinates": [[
+//       [-109.05, 41.00],
+//       [-102.06, 40.99],
+//       [-102.03, 36.99],
+//       [-109.04, 36.99],
+//       [-109.05, 41.00]
+//     ]]
+//   }
+// }];
 export const geojsonFeature = [{
   "type": "Feature",
   "properties": {
-    "party": "Republican",
-    "popupContent": "This is where the Rockies play!"
+    "name": "Coors Field",
+    "show_on_map": true
   },
   "geometry": {
-    "type": "Polygon",
-    "coordinates": [[
-      [-104.05, 48.99],
-      [-97.22, 48.98],
-      [-96.58, 45.94],
-      [-104.03, 45.94],
-      [-104.05, 48.99]
-    ]]
+    "type": "Point",
+    "coordinates": [35.033333, 48.45]
   }
 }, {
   "type": "Feature",
-  "properties": {"party": "Democrat"},
+  "properties": {
+    "name": "Busch Field",
+    "show_on_map": true
+  },
   "geometry": {
-    "type": "Polygon",
-    "coordinates": [[
-      [-109.05, 41.00],
-      [-102.06, 40.99],
-      [-102.03, 36.99],
-      [-109.04, 36.99],
-      [-109.05, 41.00]
-    ]]
+    "type": "Point",
+    "coordinates": [-104.98404, 39.74621]
   }
 }];
