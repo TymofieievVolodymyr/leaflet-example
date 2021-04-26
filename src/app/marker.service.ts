@@ -40,7 +40,7 @@ export class MarkerService {
         const circle = L.circleMarker([lat, lon], {
           radius: MarkerService.scaledRadius(c.properties.population, maxPop)
         });
-
+        // method for adding popup
         circle.bindPopup(this.popupService.makeCapitalPopup(c.properties));
 
         circle.addTo(map);
