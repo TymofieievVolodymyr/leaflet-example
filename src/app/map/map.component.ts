@@ -65,21 +65,44 @@ export class MapComponent implements AfterViewInit {
     //   }
     // }).addTo(this.map);
 
-    const geojsonMarkerOptions = {
-      radius: 8,
-      fillColor: '#ff7800',
-      color: '#000',
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
+    // const geojsonMarkerOptions = {
+    //   radius: 8,
+    //   fillColor: '#ff7800',
+    //   color: '#000',
+    //   weight: 1,
+    //   opacity: 1,
+    //   fillOpacity: 0.8
+    // };
+    //
+    // L.geoJSON(geojsonFeature, {
+    //   pointToLayer: function(feature, latlng) {
+    //     return L.circleMarker(latlng, geojsonMarkerOptions);
+    //   }
+    // }).addTo(this.map);
+
+    function onEachFeature(feature, layer) {
+      // does this feature have a property named popupContent?
+      if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+      }
+    }
+
+    const geojsonFeature = {
+      "type": "Feature",
+      "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "This is where the Rockies play!"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.99404, 39.75621]
+      }
     };
 
     L.geoJSON(geojsonFeature, {
-      pointToLayer: function(feature, latlng) {
-        return L.circleMarker(latlng, geojsonMarkerOptions);
-      }
+      onEachFeature: onEachFeature
     }).addTo(this.map);
-
 
     tiles.addTo(this.map);
   }

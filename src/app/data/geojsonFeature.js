@@ -17,15 +17,18 @@
 //   "type": "LineString",
 //   "coordinates": [[-105, 40], [-110, 45], [-115, 55]]
 // }];
-export const geojsonFeature =   [{
+export const geojsonFeature = [{
   "type": "Feature",
-  "properties": {"party": "Republican"},
+  "properties": {
+    "party": "Republican",
+    "popupContent": "This is where the Rockies play!"
+  },
   "geometry": {
     "type": "Polygon",
     "coordinates": [[
       [-104.05, 48.99],
-      [-97.22,  48.98],
-      [-96.58,  45.94],
+      [-97.22, 48.98],
+      [-96.58, 45.94],
       [-104.03, 45.94],
       [-104.05, 48.99]
     ]]
