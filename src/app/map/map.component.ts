@@ -54,16 +54,32 @@ export class MapComponent implements AfterViewInit {
     // const myLayer = L.geoJSON().addTo(this.map);
     // myLayer.addData(geojsonFeature);
 
+    // L.geoJSON(geojsonFeature, {
+    //   style: function(feature) {
+    //     switch (feature.properties.party) {
+    //       case 'Republican':
+    //         return {color: '#ff0000'};
+    //       case 'Democrat':
+    //         return {color: '#0000ff'};
+    //     }
+    //   }
+    // }).addTo(this.map);
+
+    const geojsonMarkerOptions = {
+      radius: 8,
+      fillColor: '#ff7800',
+      color: '#000',
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    };
+
     L.geoJSON(geojsonFeature, {
-      style: function(feature) {
-        switch (feature.properties.party) {
-          case 'Republican':
-            return {color: '#ff0000'};
-          case 'Democrat':
-            return {color: '#0000ff'};
-        }
+      pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
       }
     }).addTo(this.map);
+
 
     tiles.addTo(this.map);
   }
