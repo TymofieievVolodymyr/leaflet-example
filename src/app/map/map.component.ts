@@ -106,6 +106,7 @@ export class MapComponent implements AfterViewInit {
 
     L.geoJSON(this.geojsonFeature, {
       filter: (feature, layer) => {
+        console.log(feature);
         return feature.properties.show_on_map;
       }
     }).addTo(this.map);

@@ -61,7 +61,7 @@ export const geojsonFeature = [{
   "type": "Feature",
   "properties": {
     "name": "Busch Field",
-    "show_on_map": true
+    "show_on_map": false
   },
   "geometry": {
     "type": "Point",
